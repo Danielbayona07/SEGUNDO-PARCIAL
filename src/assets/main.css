@@ -1,0 +1,118 @@
+/* 1. Importar Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap');
+
+/* 2. Definir paleta de colores 𝑺𝑻𝑹𝑬𝑬𝑻 𝑻𝑯𝑼𝑮 */
+:root {
+  --bs-body-bg: #1a1a1a;
+  --bs-body-color: #f5f5f5;
+  --bs-primary: #f0e603; /* Amarillo Neón */
+  --bs-secondary: #333;
+  --bs-light: #444;
+  --bs-dark: #1a1a1a;
+  --bs-border-color: #4d4d4d;
+
+  /* Colores de componentes */
+  --bs-table-bg: #242424;
+  --bs-table-striped-bg: #2c2c2c;
+  --bs-table-hover-bg: #3a3a3a;
+  --bs-table-color: var(--bs-body-color);
+  --bs-table-border-color: var(--bs-border-color);
+  
+  --bs-modal-bg: #242424;
+  --bs-modal-header-border-color: var(--bs-border-color);
+  --bs-modal-footer-border-color: var(--bs-border-color);
+  
+  --bs-form-control-bg: #333;
+  --bs-form-control-color: var(--bs-body-color);
+  --bs-form-control-border-color: var(--bs-border-color);
+  --bs-form-control-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.5);
+}
+
+/* 3. Aplicar Fuentes */
+h1, h2, h3, h4, h5, h6, .navbar-brand, .sidebar-brand {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  color: var(--bs-primary); /* Títulos en amarillo */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 4. Estilos específicos */
+
+/* --- Login View --- */
+.login-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #111;
+}
+.login-card {
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* --- Dashboard Layout --- */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  flex-shrink: 0;
+  width: 280px;
+  background-color: #242424;
+  border-right: 1px solid var(--bs-border-color);
+}
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.main-content .navbar {
+  border-bottom: 1px solid var(--bs-border-color);
+}
+.content-wrapper {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.app-footer {
+  flex-shrink: 0;
+  background-color: #242424;
+  border-top: 1px solid var(--bs-border-color);
+  color: #888;
+}
+
+/* --- Sidebar --- */
+.sidebar .nav-link {
+  color: #ccc;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+}
+.sidebar .nav-link:hover {
+  background-color: #333;
+  color: white;
+}
+.sidebar .nav-link.router-link-active {
+  background-color: var(--bs-primary);
+  color: #111;
+  font-weight: bold;
+}
+
+/* --- Botones --- */
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-color: #111;
+  --bs-btn-hover-bg: #d8cd02;
+  --bs-btn-hover-border-color: #d8cd02;
+  --bs-btn-hover-color: #111;
+  --bs-btn-active-bg: #d8cd02;
+  --bs-btn-active-border-color: #d8cd02;
+  --bs-btn-active-color: #111;
+  --bs-btn-disabled-bg: var(--bs-primary);
+  --bs-btn-disabled-border-color: var(--bs-primary);
+}

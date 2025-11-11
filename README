@@ -1,0 +1,119 @@
+𝑺𝑻𝑹𝑬𝑬𝑻 𝑻𝑯𝑼𝑮 - Panel de Administración
+
+Este proyecto es un panel de administración (Dashboard) para la tienda de ropa urbana "𝑺𝑻𝑹𝑬𝑬𝑻 𝑻𝑯𝑼𝑮", desarrollado como parte del segundo parcial de Desarrollo de Aplicaciones Web.
+
+La aplicación está construida con Vue.js 3 (Composition API), Vue Router y Bootstrap 5.3, enfocándose en una arquitectura modular y componentizada.
+
+🚀 Cómo Empezar
+
+Clona este repositorio.
+
+Instala las dependencias: npm install
+
+Ejecuta el servidor de desarrollo: npm run dev
+
+Abre http://localhost:5173 en tu navegador.
+
+Credenciales de prueba (de public/usuarios.json):
+
+Usuario: admin / Clave: 1234
+
+Usuario: thug / Clave: urban
+
+1. Modularización (Estructura del Proyecto)
+
+El proyecto está organizado de forma modular para separar responsabilidades:
+
+/src/assets: Contiene el main.css con estilos personalizados y la paleta de colores de la marca.
+
+/src/components: Almacena componentes reutilizables (Navbar, Sidebar, Footer, etc.).
+
+/src/views: Contiene las "páginas" principales de la aplicación (Login, Dashboard, ProductView).
+
+/src/router: Define las rutas de navegación de la aplicación usando vue-router.
+
+/src/services: Centraliza la lógica de consumo de API (ej. apiService.js).
+
+/public: Almacena archivos estáticos, como el usuarios.json para el login simulado.
+
+2. Consumo de API Externa (FakeStore API)
+
+La gestión de productos se realiza consumiendo la FakeStore API.
+
+La lógica de fetch está en src/services/apiService.js. Se aplica un filtro para obtener solo productos de las categorías "men's clothing" y "women's clothing", relevantes para la tienda.
+
+Ejemplo de consumo (Listar productos):
+
+// src/services/apiService.js
+async getProducts() {
+  const response = await fetch(`${API_URL}`);
+  const allProducts = await response.json();
+  
+  // Filtrar solo productos de ropa
+  return allProducts.filter(product => 
+    product.category === "men's clothing" || 
+    product.category === "women's clothing"
+  );
+},
+
+
+3. Comunicación entre Componentes (Props)
+
+Un ejemplo de comunicación es el ProductCardComponent.vue, que recibe la información de un producto a través de props para mostrarla.
+
+Uso (hipotético):
+
+<ProductCardComponent :product="miProducto" />
+
+
+Definición del componente (ProductCardComponent.vue):
+
+<script setup>
+// El componente define 'product' como una prop requerida
+defineProps({
+  product: {
+    type: Object,
+    required: true
+  }
+})
+</script>
+
+
+4. Aclaración sobre el Login
+
+El sistema de login implementado en LoginView.vue es una simulación con fines educativos. Valida las credenciales contra un archivo public/usuarios.json estático. En una aplicación real, esto se manejaría con un backend seguro y autenticación basada en tokens (JWT).ESTRUCTURA DEL PROYECTO
+
+tu-proyecto-vue/
+├── public/
+│   └── usuarios.json         # Archivo JSON para el login 
+│
+├── src/
+│   ├── assets/
+│   │   └── main.css            # Para tus estilos personalizados y variables [cite: 12]
+│   │
+│   ├── components/             # Componentes reutilizables [cite: 18, 42]
+│   │   ├── NavbarComponent.vue   # Encabezado superior [cite: 45]
+│   │   ├── SidebarComponent.vue  # Menú lateral [cite: 46]
+│   │   ├── FooterComponent.vue   # Pie de página [cite: 47]
+│   │   └── ProductCardComponent.vue # Tarjeta de producto [cite: 48]
+│   │
+│   ├── router/
+│   │   └── index.js            # Configuración de vue-router [cite: 18, 51]
+│   │
+│   ├── services/
+│   │   └── apiService.js       # Lógica para consumir la API externa 
+│   │
+│   ├── views/                  # Vistas (páginas) 
+│   │   ├── LoginView.vue       # Vista de inicio de sesión [cite: 22, 53]
+│   │   ├── DashboardView.vue   # Vista principal que contiene el layout [cite: 27, 54]
+│   │   │
+│   │   └── dashboard/          # Vistas "hijas" del Dashboard
+│   │       ├── ProductView.vue     # Vista para CRUD de productos [cite: 31, 56]
+│   │       └── ClientesView.vue  # (Opcional) [cite: 57]
+│   │
+│   ├── App.vue                 # Punto de entrada principal de la app [cite: 58]
+│   └── main.js                 # Instancia de Vue (importar Bootstrap aquí)
+│
+├── .gitignore
+├── package.json
+└── README.md                   # Documentación 
